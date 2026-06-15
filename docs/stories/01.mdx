@@ -45,6 +45,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 <div class="fairy-pdf-viewer-wrapper">
 
+{/* 桌面端：内嵌 PDF iframe（移动端隐藏） */}
 <div class="fairy-pdf-viewer">
 <iframe
   src={useBaseUrl('/pdfs/五只小鸭去游泳.pdf') + '#toolbar=1&navpanes=0&scrollbar=1&view=FitH'}
@@ -53,7 +54,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 />
 </div>
 
-[📥 下载完整 PDF]({useBaseUrl('/pdfs/五只小鸭去游泳.pdf')})
+{/* 移动端：缩略图 + 打开 PDF 按钮（桌面端隐藏） */}
+<a class="fairy-pdf-mobile-card" href={useBaseUrl('/pdfs/五只小鸭去游泳.pdf')} target="_blank" rel="noopener">
+  <img class="fairy-pdf-mobile-thumb" src={useBaseUrl('/thumbs/五只小鸭去游泳.jpg')} alt="五只小鸭去游泳 插画封面" loading="lazy" />
+  <div class="fairy-pdf-mobile-label">
+    <span class="fairy-pdf-mobile-emoji">📖</span>
+    <span class="fairy-pdf-mobile-text">点一下，看整本绘本</span>
+    <span class="fairy-pdf-mobile-arrow">→</span>
+  </div>
+</a>
 
 </div>
 </div>
