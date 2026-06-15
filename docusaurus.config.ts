@@ -57,13 +57,13 @@ const config: Config = {
           title: '所有故事',
           items: [
 
-            {label: '五只小鸭去游泳', to: '/stories/01/index'},
+            {label: '五只小鸭去游泳', to: '/stories/01'},
 
-            {label: '公主与王子', to: '/stories/02/index'},
+            {label: '公主与王子', to: '/stories/02'},
 
-            {label: '小朵朵的勇敢探索', to: '/stories/03/index'},
+            {label: '小朵朵的勇敢探索', to: '/stories/03'},
 
-            {label: '怪兽总动员', to: '/stories/04/index'},
+            {label: '怪兽总动员', to: '/stories/04'},
 
           ],
         },
