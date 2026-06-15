@@ -11,13 +11,13 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
 
-        'stories/01/index',
+        'stories/01',
 
-        'stories/02/index',
+        'stories/02',
 
-        'stories/03/index',
+        'stories/03',
 
-        'stories/04/index',
+        'stories/04',
 
       ],
     },
