@@ -5,12 +5,32 @@ sidebar_position: 4
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import {useEffect} from 'react';
+
+{/* 移动端/桌面端检测：设置 body[data-viewport]，CSS 用属性选择器控制（不依赖 @media，新老浏览器 100% 生效） */}
+export const ViewportSetter = () => {
+  useEffect(() => {
+    function setVp(){
+      var w = window.innerWidth || document.documentElement.clientWidth;
+      document.body.setAttribute('data-viewport', w < 996 ? 'mobile' : 'desktop');
+    }
+    setVp();
+    window.addEventListener('resize', setVp, {passive: true});
+    window.addEventListener('orientationchange', setVp);
+    return () => {
+      window.removeEventListener('resize', setVp);
+      window.removeEventListener('orientationchange', setVp);
+    };
+  }, []);
+  return null;
+};
 
 # 怪兽总动员
 
 ✍️ 婧姝 · 2026-06-13
 
 
+<ViewportSetter />
 <div class="fairy-story-layout">
 <div class="fairy-story-text">
 
