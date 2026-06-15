@@ -10,7 +10,7 @@ const config: Config = {
   future: {v4: true},
 
   url: 'https://book.jing-shu.top',
-  baseUrl: 'C:/Program Files/Git/',
+  baseUrl: '/',
 
   organizationName: 'jeekeagle',
   projectName: 'mychild',
