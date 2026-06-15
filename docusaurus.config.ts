@@ -9,8 +9,8 @@ const config: Config = {
 
   future: {v4: true},
 
-  url: 'https://jeekeagle.github.io',
-  baseUrl: '/mychild/',
+  url: 'https://book.jing-shu.top',
+  baseUrl: 'C:/Program Files/Git/',
 
   organizationName: 'jeekeagle',
   projectName: 'mychild',
