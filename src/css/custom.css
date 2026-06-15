@@ -158,48 +158,103 @@ article h2:has(+ p) + p {
 /* 故事卡片大图缩略（首页） */
 .fairy-story-card {
   background: #FFFDF8;
-  border-radius: 32px;
-  padding: 1.5rem;
-  box-shadow: 0 6px 24px rgba(255, 183, 160, 0.20);
+  border-radius: 24px;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(255, 183, 160, 0.20);
   transition: transform 0.25s, box-shadow 0.25s;
   display: block;
   text-decoration: none !important;
   color: inherit !important;
   border: 3px solid transparent;
+  overflow: hidden;
 }
 .fairy-story-card:hover {
-  transform: translateY(-6px) rotate(-0.5deg);
-  box-shadow: 0 12px 36px rgba(255, 183, 160, 0.35);
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 0 10px 28px rgba(255, 183, 160, 0.35);
   border-color: #FFE5A0;
 }
 .fairy-story-card-thumb {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: 24px;
+  border-radius: 18px;
   background: #FFE5A0;
   display: block;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 0.75rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 .fairy-story-card-thumb-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
+  font-size: 3rem;
   color: #5C3D2E;
 }
 .fairy-story-card-title {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #5C3D2E;
+  margin: 0 0 0.4rem 0;
+  font-family: var(--ifm-heading-font-family);
+  line-height: 1.3;
+}
+.fairy-story-card-meta {
+  font-size: 0.88rem;
+  color: #A07B6B;
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 首页网格 */
+.fairy-story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+@media (max-width: 600px) {
+  .fairy-story-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+.fairy-stories-section {
+  padding: 2rem 0 4rem;
+}
+
+.fairy-section-title {
+  font-size: 2rem;
   font-weight: 700;
   color: #5C3D2E;
   margin: 0 0 0.5rem 0;
-  font-family: var(--ifm-heading-font-family);
+  text-align: center;
 }
-.fairy-story-card-meta {
+
+.fairy-section-lead {
+  font-size: 1.05rem;
+  color: #A07B6B;
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+.fairy-hero-eyebrow {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
   font-size: 0.95rem;
   color: #A07B6B;
-  margin: 0;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.fairy-hero-cta {
+  margin-top: 1.5rem;
 }
 
 /* 首页大封面区 */
