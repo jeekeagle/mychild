@@ -145,13 +145,63 @@ article h2:has(+ p) + p {
   gap: 2rem;
   align-items: start;
 }
+
+/* 移动端 PDF 卡片：默认隐藏（桌面端用 iframe） */
+.fairy-pdf-mobile-card {
+  display: none;
+}
+
 @media (max-width: 996px) {
   .fairy-story-layout {
     grid-template-columns: 1fr;
   }
+  /* 移动端隐藏 iframe，显示缩略图卡片 */
   .fairy-pdf-viewer {
-    height: 70vh;
-    position: static;
+    display: none;
+  }
+  .fairy-pdf-mobile-card {
+    display: block;
+    margin: 1.5rem 0;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #FFFDF8;
+    border: 4px solid #FFE5A0;
+    box-shadow: 0 8px 32px rgba(255, 183, 160, 0.25);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .fairy-pdf-mobile-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 16px rgba(255, 183, 160, 0.4);
+  }
+  .fairy-pdf-mobile-thumb {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+  .fairy-pdf-mobile-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1rem 1.2rem;
+    background: linear-gradient(135deg, #FFB7A0 0%, #FFE5A0 100%);
+    color: #5C3317;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  .fairy-pdf-mobile-emoji {
+    font-size: 1.4rem;
+  }
+  .fairy-pdf-mobile-arrow {
+    font-size: 1.3rem;
+    transition: transform 0.2s;
+  }
+  .fairy-pdf-mobile-card:active .fairy-pdf-mobile-arrow {
+    transform: translateX(4px);
   }
 }
 
