@@ -120,7 +120,9 @@ article h2:has(+ p) + p {
   /* 兜底靠 hr 区分 */
 }
 
-/* 故事页右侧 PDF 嵌入区 */
+/* 故事页右侧 PDF 嵌入区
+   注意：mobile/desktop 切换不依赖 @media（@media 在某些老手机浏览器会被 postcss 编译成 range syntax 而失效）
+   改用 body[data-viewport] 属性选择器，由 inline JS 设置（见 chapter.stories.mdx.tpl 的 ViewportSetter） */
 .fairy-pdf-viewer {
   position: sticky;
   top: 80px;
@@ -151,58 +153,62 @@ article h2:has(+ p) + p {
   display: none;
 }
 
-@media (max-width: 996px) {
-  .fairy-story-layout {
-    grid-template-columns: 1fr;
-  }
-  /* 移动端隐藏 iframe，显示缩略图卡片 */
-  .fairy-pdf-viewer {
-    display: none;
-  }
-  .fairy-pdf-mobile-card {
-    display: block;
-    margin: 1.5rem 0;
-    border-radius: 24px;
-    overflow: hidden;
-    background: #FFFDF8;
-    border: 4px solid #FFE5A0;
-    box-shadow: 0 8px 32px rgba(255, 183, 160, 0.25);
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .fairy-pdf-mobile-card:active {
-    transform: scale(0.98);
-    box-shadow: 0 4px 16px rgba(255, 183, 160, 0.4);
-  }
-  .fairy-pdf-mobile-thumb {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-  }
-  .fairy-pdf-mobile-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    padding: 1rem 1.2rem;
-    background: linear-gradient(135deg, #FFB7A0 0%, #FFE5A0 100%);
-    color: #5C3317;
-    font-size: 1.15rem;
-    font-weight: 600;
-  }
-  .fairy-pdf-mobile-emoji {
-    font-size: 1.4rem;
-  }
-  .fairy-pdf-mobile-arrow {
-    font-size: 1.3rem;
-    transition: transform 0.2s;
-  }
-  .fairy-pdf-mobile-card:active .fairy-pdf-mobile-arrow {
-    transform: translateX(4px);
-  }
+/* ===== 移动端（用属性选择器，不依赖 @media，兼容性 100%） ===== */
+/* 默认状态：JS 未运行时，按 mobile 处理（先显示卡片，避免桌面端闪 iframe） */
+body[data-viewport="mobile"] .fairy-story-layout,
+body:not([data-viewport]) .fairy-story-layout {
+  grid-template-columns: 1fr;
+}
+body[data-viewport="mobile"] .fairy-pdf-viewer,
+body:not([data-viewport]) .fairy-pdf-viewer {
+  display: none;
+}
+body[data-viewport="mobile"] .fairy-pdf-mobile-card,
+body:not([data-viewport]) .fairy-pdf-mobile-card {
+  display: block;
+  margin: 1.5rem 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #FFFDF8;
+  border: 4px solid #FFE5A0;
+  box-shadow: 0 8px 32px rgba(255, 183, 160, 0.25);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+body[data-viewport="mobile"] .fairy-pdf-mobile-card:active,
+body:not([data-viewport]) .fairy-pdf-mobile-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 16px rgba(255, 183, 160, 0.4);
+}
+.fairy-pdf-mobile-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.fairy-pdf-mobile-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(135deg, #FFB7A0 0%, #FFE5A0 100%);
+  color: #5C3317;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.fairy-pdf-mobile-emoji {
+  font-size: 1.4rem;
+}
+.fairy-pdf-mobile-arrow {
+  font-size: 1.3rem;
+  transition: transform 0.2s;
+}
+body[data-viewport="mobile"] .fairy-pdf-mobile-card:active .fairy-pdf-mobile-arrow,
+body:not([data-viewport]) .fairy-pdf-mobile-card:active .fairy-pdf-mobile-arrow {
+  transform: translateX(4px);
 }
 
 /* 故事卡片大图缩略（首页） */
