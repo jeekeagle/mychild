@@ -1,0 +1,263 @@
+/* ====================================================================
+ * 《五只小鸭去游泳》 主题
+ * 主题: 童话柔光 (Fairytale)
+ * 描述: 童话/绘本/儿童故事——粉橘 + 薄荷绿 + 鹅黄 + 奶白底，霞鹜文楷中文 + Comic Neue 英文，圆角云朵卡片
+ * ==================================================================== */
+
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Comic+Relief:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --ifm-color-primary: #FFB7A0;
+  --ifm-color-primary-dark: #d89b88;
+  --ifm-color-primary-darker: #bf8978;
+  --ifm-color-primary-darkest: #996d60;
+  --ifm-color-primary-light: #ffc1ae;
+  --ifm-color-primary-lighter: #ffc9b7;
+  --ifm-color-primary-lightest: #ffd3c6;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --theme-accent: #FFE5A0;
+  --theme-accent-soft: rgba(255, 229, 160, 0.15);
+
+  /* 字体栈：中文优先（中文用主题字体，拉丁/数字自动用同一字体的拉丁字形，保持统一），
+     主题字体没有的字符由 font_en 兜底 */
+  --ifm-font-family-base:
+    'LXGW WenKai', '霞鹜文楷', 'LXGW WenKai Screen', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif,
+    'Comic Neue', 'LXGW WenKai', '霞鹜文楷', cursive, sans-serif;
+  --ifm-heading-font-family:
+    'LXGW WenKai', '霞鹜文楷', 'LXGW WenKai Screen', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif,
+    'Comic Neue', 'LXGW WenKai', '霞鹜文楷', cursive, sans-serif;
+  --ifm-font-family-monospace:
+    'Comic Neue', 'LXGW WenKai', cursive, monospace;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #A8E6CF;
+  --ifm-color-primary-dark: #8ec3af;
+  --ifm-color-primary-darker: #7eac9b;
+  --ifm-color-primary-darkest: #648a7c;
+  --ifm-color-primary-light: #b5e9d6;
+  --ifm-color-primary-lighter: #bdecdb;
+  --ifm-color-primary-lightest: #caf0e2;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --theme-accent: #FFD3B6;
+  --theme-accent-soft: rgba(255, 211, 182, 0.15);
+}
+
+
+/* === Fairytale 专用样式：圆角、字号、装饰 === */
+
+/* 奶白底 + 柔和背景渐变 */
+:root {
+  --ifm-background-color: #FFF9F2;
+  --ifm-background-surface-color: #FFFDF8;
+  --ifm-global-radius: 20px;
+  --ifm-button-border-radius: 999px;
+  --ifm-card-border-radius: 24px;
+  --ifm-font-size-base: 18px;
+  --ifm-line-height-base: 1.85;
+  --ifm-heading-font-weight: 700;
+  --ifm-h1-font-size: 3rem;
+  --ifm-h2-font-size: 2.2rem;
+  --ifm-h3-font-size: 1.6rem;
+  --ifm-link-hover-decoration: underline wavy;
+}
+
+html body {
+  background:
+    radial-gradient(circle at 15% 12%, rgba(255, 183, 160, 0.18) 0%, transparent 35%),
+    radial-gradient(circle at 88% 18%, rgba(168, 230, 207, 0.18) 0%, transparent 38%),
+    radial-gradient(circle at 50% 88%, rgba(255, 229, 160, 0.16) 0%, transparent 40%),
+    #FFF9F2;
+  background-attachment: fixed;
+}
+
+/* 卡片大圆角 + 柔和阴影 */
+.card, .theme-doc-sidebar-container, .navbar, article {
+  border-radius: var(--ifm-card-border-radius) !important;
+}
+
+/* 按钮大圆角 + 渐变 + 阴影 */
+.button {
+  border-radius: 999px !important;
+  font-weight: 700;
+  padding: 0.7rem 1.6rem;
+  box-shadow: 0 4px 14px rgba(255, 183, 160, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 183, 160, 0.50);
+}
+.button--primary {
+  background: linear-gradient(135deg, #FFB7A0 0%, #FFD3B6 100%) !important;
+  color: #5C3D2E !important;
+  border: none;
+}
+.button--primary:hover {
+  color: #5C3D2E !important;
+}
+.button--secondary {
+  background: #FFFDF8 !important;
+  color: #FF8C6A !important;
+  border: 2px solid #FFB7A0 !important;
+}
+
+/* 文章正文：大字号 + 大行距 + 段间距 */
+article p {
+  font-size: 1.15rem;
+  line-height: 1.95;
+  margin-bottom: 1.2em;
+}
+
+/* 家长导读特殊样式：识别"**给XXX的互动提示：**"或"---"后段落 */
+article blockquote,
+article hr + p,
+article h2:has(+ p) + p {
+  /* 兜底靠 hr 区分 */
+}
+
+/* 故事页右侧 PDF 嵌入区 */
+.fairy-pdf-viewer {
+  position: sticky;
+  top: 80px;
+  width: 100%;
+  height: calc(100vh - 120px);
+  border: 4px solid #FFE5A0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #FFFDF8;
+  box-shadow: 0 8px 32px rgba(255, 183, 160, 0.25);
+}
+.fairy-pdf-viewer iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 故事页布局：左文 + 右 PDF（移动端折叠） */
+.fairy-story-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (max-width: 996px) {
+  .fairy-story-layout {
+    grid-template-columns: 1fr;
+  }
+  .fairy-pdf-viewer {
+    height: 70vh;
+    position: static;
+  }
+}
+
+/* 故事卡片大图缩略（首页） */
+.fairy-story-card {
+  background: #FFFDF8;
+  border-radius: 32px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 24px rgba(255, 183, 160, 0.20);
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: block;
+  text-decoration: none !important;
+  color: inherit !important;
+  border: 3px solid transparent;
+}
+.fairy-story-card:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: 0 12px 36px rgba(255, 183, 160, 0.35);
+  border-color: #FFE5A0;
+}
+.fairy-story-card-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 24px;
+  background: #FFE5A0;
+  display: block;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.fairy-story-card-thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #5C3D2E;
+}
+.fairy-story-card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #5C3D2E;
+  margin: 0 0 0.5rem 0;
+  font-family: var(--ifm-heading-font-family);
+}
+.fairy-story-card-meta {
+  font-size: 0.95rem;
+  color: #A07B6B;
+  margin: 0;
+}
+
+/* 首页大封面区 */
+.fairy-hero {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  position: relative;
+}
+.fairy-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #5C3D2E;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 0 rgba(255, 183, 160, 0.3);
+}
+.fairy-hero-sub {
+  font-size: 1.3rem;
+  color: #A07B6B;
+  margin-bottom: 2rem;
+}
+
+/* 装饰：云朵 SVG 用 ::before */
+.fairy-deco {
+  position: relative;
+}
+.fairy-deco::before {
+  content: '☁️';
+  position: absolute;
+  top: -10px;
+  left: -30px;
+  font-size: 3rem;
+  opacity: 0.5;
+  animation: fairy-float 6s ease-in-out infinite;
+}
+@keyframes fairy-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 家长导读小卡：识别 markdown 里"**给XXX的互动提示：**"开头 + "---" 后的段落 */
+article p:has(strong:only-child) {
+  /* 让所有"以加粗为唯一内容的段落"当导读提示 */
+}
+
+/* 简化为：识别包含"互动提示"或"给爸爸"或"给妈妈"等关键词的段落加底色 */
+.fairy-tip {
+  background: linear-gradient(135deg, #FFF5E1 0%, #FFE5A0 100%);
+  border-left: 6px solid #FFB7A0;
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  font-size: 1.05rem;
+  color: #5C3D2E;
+  box-shadow: 0 4px 12px rgba(255, 183, 160, 0.20);
+}
+.fairy-tip::before {
+  content: '💡 ';
+  margin-right: 0.3rem;
+}
+
+
