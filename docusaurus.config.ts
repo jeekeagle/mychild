@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: '五只小鸭去游泳',
-  tagline: '献给最棒的小读者 ❤️',
+  title: '童话小镇',
+  tagline: '婧姝的第一个童话集',
   favicon: 'img/favicon.svg',
 
   future: {v4: true},
@@ -42,8 +42,8 @@ const config: Config = {
       {name: 'Expires', content: '0'},
     ],
     navbar: {
-      title: '五只小鸭去游泳',
-      logo: {alt: '五', src: 'img/logo.svg'},
+      title: '童话小镇',
+      logo: {alt: '童', src: 'img/logo.svg'},
       items: [
         {to: '/', label: '🏠 首页', position: 'left'},
         {type: 'search', position: 'right'},
@@ -74,7 +74,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} jeekeagle · 五只小鸭去游泳 · 用爱制作 ❤️`,
+      copyright: `© ${new Date().getFullYear()} jeekeagle · 童话小镇 · 用爱制作 ❤️`,
     },
     prism: {theme: prismThemes.github, darkTheme: prismThemes.dracula},
   } satisfies Preset.ThemeConfig,
