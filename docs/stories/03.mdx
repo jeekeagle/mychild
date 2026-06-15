@@ -7,9 +7,8 @@ sidebar_position: 3
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {useEffect, useState} from 'react';
 
-{/* 移动端/桌面端检测：把结果写到 body[data-viewport]
-    CSS 用属性选择器控制（不依赖 @media，老浏览器 100% 生效）
-    SSR 安全：服务端渲染时 windowSize = 'ssr'，hydration 后 useEffect 才会写入 */}
+<!-- 移动端/桌面端检测：把结果写到 body[data-viewport]，
+     CSS 用属性选择器控制（不依赖 @media，老浏览器 100% 生效） -->
 export const ViewportSetter = () => {
   const [windowSize, setWindowSize] = useState('ssr');
   useEffect(() => {
