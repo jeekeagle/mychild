@@ -16,12 +16,12 @@ export default function Home(): JSX.Element {
           <h1 className="fairy-hero-title">{book.title}</h1>
           <p className="fairy-hero-sub">{book.tagline}</p>
           {book.stories && book.stories.length > 0 && (
-            <Link
+            <a
               className="button button--primary button--lg fairy-hero-cta"
-              to={useBaseUrl('/' + book.stories[0].id)}
+              href={useBaseUrl('/' + book.stories[0].id)}
             >
               开始第一个故事 →
-            </Link>
+            </a>
           )}
         </div>
       </header>
@@ -33,9 +33,9 @@ export default function Home(): JSX.Element {
             <p className="fairy-section-lead">{book.parts_section_lead}</p>
             <div className="fairy-story-grid">
               {book.stories.map((s) => (
-                <Link
+                <a
                   key={s.id}
-                  to={useBaseUrl('/' + s.id)}
+                  href={useBaseUrl('/' + s.id)}
                   className="fairy-story-card"
                 >
                   {s.thumb_static_url ? (
@@ -54,7 +54,7 @@ export default function Home(): JSX.Element {
                   {s.preview && (
                     <p className="fairy-story-card-meta">{s.preview}</p>
                   )}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
